@@ -1,0 +1,123 @@
+// Estensione classi font-size (.fs-1 → .fs-10)
+$font-sizes: map-merge(
+  $font-sizes,
+  (
+    7: 0.875rem,  // più piccolo di fs-6
+    8: 0.75rem,
+    9: 0.625rem,
+    10: 0.5rem
+  )
+);
+
+// Estensione classi border-width (.border-1 → .border-10)
+$border-widths: map-merge(
+  $border-widths,
+  (
+    6: 6px,
+    7: 7px,
+    8: 8px,
+    9: 9px,
+    10: 10px
+  )
+);
+
+// Padding default dei bottoni
+$btn-padding-x: 2.5rem;
+$btn-padding-y: 0.75rem;
+
+// Cambia gutter di default (spazio tra colonne)
+$grid-gutter-width: 0.5rem;
+
+// Stile di default delle card
+$card-bg: $dark;
+$card-color: $info;
+$card-border-radius: 2rem;
+
+// Colori principali personalizzati
+$danger: #ff0077;
+$info: #00ffea;
+$light: #f3eeff;
+
+// Border-radius a pillola per badge, input e bottoni
+$badge-border-radius: 50rem;
+$input-border-radius: 50rem;
+$btn-border-radius: 50rem;
+
+// Aggiunta colori Epicode
+$theme-colors: map-merge(
+  $theme-colors,
+  (
+    "epicode-1": #5726c3,
+    "epicode-2": #8625a5,
+    "epicode-3": #cb2376
+  )
+);
+
+// Breakpoint aggiuntivi 3xl e 4xl
+$grid-breakpoints: map-merge(
+  $grid-breakpoints,
+  (
+    "3xl": 1600px,
+    "4xl": 1800px
+  )
+);
+
+$container-max-widths: map-merge(
+  $container-max-widths,
+  (
+    "3xl": 1520px,
+    "4xl": 1720px
+  )
+);
+
+
+// CLASSI PERSONALIZZATE EXTRA (dopo import Bootstrap)
+
+
+// Footer con font-size più piccolo
+footer {
+  @extend .fs-10;
+}
+
+// Sezione saldi: card con bordo 6
+section.saldi .card {
+  @extend .border-6;
+}
+
+// Immagine offerta del giorno: bordo azzurro border-10
+.offerta-del-giorno img {
+  border: map-get($border-widths, 10) solid $info;
+}
+
+// Bottoni "Nascondi sezione" → outline epicode-2
+.btn-outline-epicode-2 {
+  @extend .btn-outline;
+  border-color: map-get($theme-colors, "epicode-2");
+  color: map-get($theme-colors, "epicode-2");
+
+  &:hover {
+    background-color: map-get($theme-colors, "epicode-2");
+    color: white;
+  }
+}
+
+// Sezione Hero colori personalizzati
+.hero {
+  .titolo {
+    color: map-get($theme-colors, "epicode-1");
+  }
+
+  .sottotitolo {
+    color: map-get($theme-colors, "epicode-3");
+  }
+
+  .btn-prenota {
+    background-color: map-get($theme-colors, "epicode-2");
+    border-color: map-get($theme-colors, "epicode-2");
+    color: white;
+
+    &:hover {
+      background-color: darken(map-get($theme-colors, "epicode-2"), 5%);
+    }
+  }
+}
